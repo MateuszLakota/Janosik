@@ -13,15 +13,21 @@ import java.util.List;
 
 public class Serializer {
     private static final Logger LOGGER = Logger.getLogger(Serializer.class.getName());
+
+    @Getter
     private static final String JSON = ".JSON";
+
+    @Getter
     private static final String XML = ".XML";
+
+    private static final String OUTPUT_FILE_NAME = "Line";
 
     @Getter
     private static final File SERIALIZATION_PATH = new File("C:\\Users\\" + Reader.getUSERNAME() +
-            "\\Desktop\\Line" + XML);
+            "\\Desktop\\" + OUTPUT_FILE_NAME);
 
-    public static void serialize(List<Line> lines, List<Integer> validLinesIds) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(SERIALIZATION_PATH);
+    public static void serialize(List<Line> lines, List<Integer> validLinesIds, String format) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(SERIALIZATION_PATH + format);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             for (Line line : lines) {
                 if (validLinesIds.contains(line.getId())) {

@@ -12,11 +12,11 @@ import java.util.List;
 public class Deserializer {
     private static final Logger LOGGER = Logger.getLogger(Deserializer.class.getName());
 
-    public static List<Line> getListOfDeserializedLines(int numberOfSerializedObjects) {
+    public static List<Line> getListOfDeserializedLines(int numberOfSerializedObjects, String format) {
         List<Line> deserializedLines = new ArrayList<>(0);
         Line line;
 
-        try (FileInputStream fileInputStream = new FileInputStream(Serializer.getSERIALIZATION_PATH());
+        try (FileInputStream fileInputStream = new FileInputStream(Serializer.getSERIALIZATION_PATH() + format);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             for (int i = 0; i < numberOfSerializedObjects; i++) {
                 line = (Line) objectInputStream.readObject();

@@ -14,7 +14,9 @@ public class Line implements Serializable {
     @Serial
     private static final long serialVersionUID = 2021_02_12L;
 
-    private static final String PATH = "C:\\Users\\" + Reader.getUSERNAME() + "\\Desktop\\Janosik\\lines.csv";
+    private static final String INPUT_FILE_NAME_Format = "lines.csv";
+    private static final String PATH = "C:\\Users\\" + Reader.getUSERNAME() + "\\Desktop\\Janosik\\" +
+            INPUT_FILE_NAME_Format;
 
     @Getter
     private static final File LINES_INPUT_FILE_PATH = new File(PATH);

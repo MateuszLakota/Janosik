@@ -9,8 +9,11 @@ import pl.lakota.janosik.service.Validator;
 import pl.lakota.janosik.serialization.Serializer;
 
 import java.io.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 public class Reader {
     private static final Logger LOGGER = Logger.getLogger(Reader.class.getName());
@@ -25,11 +28,12 @@ public class Reader {
 
         List<Integer> validLinesIds = Validator.getValidLinesIds(lines);
 
-        Serializer.serialize(lines, validLinesIds);
-        List<Line> deserializedLines = Deserializer.getListOfDeserializedLines(validLinesIds.size());
+        Serializer.serialize(lines, validLinesIds, Serializer.getXML());
+        List<Line> deserializedLines = Deserializer.getListOfDeserializedLines(validLinesIds.size(),
+                Serializer.getXML());
     }
 
-    private static List<Point> getPoints(File inputFilePath) {
+    public static List<Point> getPoints(File inputFilePath) {
         List<Point> points = new ArrayList<>(0);
 
         String line;
@@ -49,7 +53,7 @@ public class Reader {
         return points;
     }
 
-    private static List<Line> getLines(File inputFilePath, List<Point> points) {
+    public static List<Line> getLines(File inputFilePath, List<Point> points) {
         List<Line> lines = new ArrayList<>(0);
         List<Point> constructorPoints = new ArrayList<>(0);
 
