@@ -30,7 +30,7 @@ public class Serializer {
                 }
             }
         } catch (IOException exception) {
-            LOGGER.error(exception.getMessage());
+            LOGGER.error(exception.getMessage(), exception);
         }
     }
 }

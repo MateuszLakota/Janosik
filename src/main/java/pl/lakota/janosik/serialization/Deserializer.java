@@ -15,6 +15,7 @@ public class Deserializer {
     public static List<Line> getListOfDeserializedLines(int numberOfSerializedObjects) {
         List<Line> deserializedLines = new ArrayList<>(0);
         Line line;
+
         try (FileInputStream fileInputStream = new FileInputStream(Serializer.getSERIALIZATION_PATH());
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             for (int i = 0; i < numberOfSerializedObjects; i++) {
@@ -22,8 +23,9 @@ public class Deserializer {
                 deserializedLines.add(line);
             }
         } catch (IOException | ClassNotFoundException exception) {
-            LOGGER.error(exception.getMessage());
+            LOGGER.error(exception.getMessage(), exception);
         }
+
         return deserializedLines;
     }
 }
