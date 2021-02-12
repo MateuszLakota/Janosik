@@ -5,22 +5,16 @@ import org.apache.log4j.Logger;
 import pl.lakota.janosik.entity.Line;
 import pl.lakota.janosik.entity.Point;
 import pl.lakota.janosik.serialization.Deserializer;
-import pl.lakota.janosik.service.Validator;
 import pl.lakota.janosik.serialization.Serializer;
+import pl.lakota.janosik.service.Validator;
 
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-import java.util.ResourceBundle;
 
 public class Reader {
     private static final Logger LOGGER = Logger.getLogger(Reader.class.getName());
     private static final String REGEX_SPLITTER = ";";
-
-    @Getter
-    private static final String USERNAME = System.getProperty("user.name");
 
     public static void main(String[] args) {
         List<Point> points = Reader.getPoints(Point.getPOINTS_INPUT_FILE_PATH());
@@ -28,9 +22,8 @@ public class Reader {
 
         List<Integer> validLinesIds = Validator.getValidLinesIds(lines);
 
-        Serializer.serialize(lines, validLinesIds, Serializer.getXML());
-        List<Line> deserializedLines = Deserializer.getListOfDeserializedLines(validLinesIds.size(),
-                Serializer.getXML());
+        Serializer.serialize(lines, validLinesIds);
+        List<Line> deserializedLines = Deserializer.getListOfDeserializedLines(validLinesIds.size());
     }
 
     public static List<Point> getPoints(File inputFilePath) {

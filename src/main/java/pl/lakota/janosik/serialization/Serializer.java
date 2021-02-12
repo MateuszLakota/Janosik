@@ -4,6 +4,7 @@ import lombok.Getter;
 import org.apache.log4j.Logger;
 import pl.lakota.janosik.Reader;
 import pl.lakota.janosik.entity.Line;
+import pl.lakota.janosik.service.AppProperties;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,10 +24,12 @@ public class Serializer {
     private static final String OUTPUT_FILE_NAME = "Line";
 
     @Getter
-    private static final File SERIALIZATION_PATH = new File("C:\\Users\\" + Reader.getUSERNAME() +
+    private static final File SERIALIZATION_PATH = new File("C:\\Users\\" + AppProperties.getUSERNAME() +
             "\\Desktop\\" + OUTPUT_FILE_NAME);
 
-    public static void serialize(List<Line> lines, List<Integer> validLinesIds, String format) {
+    public static void serialize(List<Line> lines, List<Integer> validLinesIds) {
+        String format = AppProperties.getPropertiesValue("typeOfAPI").equals("REST") ? JSON : XML;
+
         try (FileOutputStream fileOutputStream = new FileOutputStream(SERIALIZATION_PATH + format);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             for (Line line : lines) {
