@@ -7,6 +7,7 @@ import pl.lakota.janosik.entity.Line;
 import pl.lakota.janosik.entity.Point;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,9 +20,13 @@ public class ReaderTest {
     private static final List<Line> TEST_LINES;
 
     static {
-        TEST_POINTS = Arrays.asList(new Point(2.0f, 3.0f, 0), new Point(5.0f, 3.0f, 0),
-                new Point(7.0f, 1.0f, 1), new Point(0.0f, 0.0f, 1),
-                new Point(2.0f, 2.0f, 2), new Point(3.0f, 6.0f, 2));
+        TEST_POINTS = new ArrayList<>(6);
+        TEST_POINTS.add(0, new Point(2.0f, 3.0f, 0));
+        TEST_POINTS.add(1, new Point(5.0f, 3.0f, 0));
+        TEST_POINTS.add(2, new Point(7.0f, 1.0f, 1));
+        TEST_POINTS.add(3, new Point(0.0f, 0.0f, 1));
+        TEST_POINTS.add(4, new Point(2.0f, 2.0f, 2));
+        TEST_POINTS.add(5, new Point(3.0f, 6.0f, 2));
 
         TEST_LINES = Arrays.asList(new Line(0, Arrays.asList(new Point(2.0f, 3.0f, 0),
                 new Point(5.0f, 3.0f, 0)), true), new Line(1,
