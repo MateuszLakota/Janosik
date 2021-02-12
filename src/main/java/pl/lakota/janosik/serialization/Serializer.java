@@ -2,6 +2,7 @@ package pl.lakota.janosik.serialization;
 
 import lombok.Getter;
 import org.apache.log4j.Logger;
+import pl.lakota.janosik.Reader;
 import pl.lakota.janosik.entity.Line;
 
 import java.io.File;
@@ -16,7 +17,8 @@ public class Serializer {
     private static final String XML = ".XML";
 
     @Getter
-    private static final File SERIALIZATION_PATH = new File("C:\\Users\\Mateusz\\Desktop\\Line" + XML);
+    private static final File SERIALIZATION_PATH = new File("C:\\Users\\" + Reader.getUSERNAME() +
+            "\\Desktop\\Line" + XML);
 
     public static void serialize(List<Line> lines, List<Integer> validLinesIds) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(SERIALIZATION_PATH);

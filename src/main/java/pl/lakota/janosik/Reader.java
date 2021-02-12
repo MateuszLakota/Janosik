@@ -1,5 +1,6 @@
 package pl.lakota.janosik;
 
+import lombok.Getter;
 import org.apache.log4j.Logger;
 import pl.lakota.janosik.entity.Line;
 import pl.lakota.janosik.entity.Point;
@@ -14,10 +15,12 @@ import java.util.List;
 public class Reader {
     private static final Logger LOGGER = Logger.getLogger(Reader.class.getName());
     private static final String REGEX_SPLITTER = ";";
+    @Getter
+    private static final String USERNAME = System.getProperty("user.name");
 
     public static void main(String[] args) {
-        List<Point> points = getPoints(Point.getPointsInputFilePath());
-        List<Line> lines = getLines(Line.getLinesInputFilePath(), points);
+        List<Point> points = getPoints(Point.getPOINTS_INPUT_FILE_PATH());
+        List<Line> lines = getLines(Line.getLINES_INPUT_FILE_PATH(), points);
         List<Integer> validLinesIds = Validator.getValidLinesIds(lines);
         Serializer.serialize(lines, validLinesIds);
         List<Line> deserializedLines = Deserializer.getListOfDeserializedLines(validLinesIds.size());
