@@ -1,6 +1,5 @@
 package pl.lakota.janosik;
 
-import lombok.Getter;
 import org.apache.log4j.Logger;
 import pl.lakota.janosik.entity.Line;
 import pl.lakota.janosik.entity.Point;

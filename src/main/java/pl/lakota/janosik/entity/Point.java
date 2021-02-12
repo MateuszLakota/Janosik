@@ -2,7 +2,6 @@ package pl.lakota.janosik.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import pl.lakota.janosik.Reader;
 import pl.lakota.janosik.service.AppProperties;
 
 import java.io.File;

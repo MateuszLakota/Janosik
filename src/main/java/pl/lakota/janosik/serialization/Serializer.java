@@ -2,7 +2,6 @@ package pl.lakota.janosik.serialization;
 
 import lombok.Getter;
 import org.apache.log4j.Logger;
-import pl.lakota.janosik.Reader;
 import pl.lakota.janosik.entity.Line;
 import pl.lakota.janosik.service.AppProperties;
 

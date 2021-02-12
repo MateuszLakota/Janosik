@@ -2,7 +2,6 @@ package pl.lakota.janosik.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import pl.lakota.janosik.Reader;
 import pl.lakota.janosik.service.AppProperties;
 
 import java.io.File;
@@ -36,6 +35,6 @@ public class Line implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Line line = (Line) o;
-        return id == line.id && shouldBeSerialized == line.shouldBeSerialized && Objects.equals(points, line.points);
+        return id == line.id && shouldBeSerialized == line.shouldBeSerialized && points.equals(line.points);
     }
 }
