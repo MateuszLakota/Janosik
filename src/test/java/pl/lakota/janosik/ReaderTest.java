@@ -7,6 +7,8 @@ import pl.lakota.janosik.entity.Line;
 import pl.lakota.janosik.entity.Point;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

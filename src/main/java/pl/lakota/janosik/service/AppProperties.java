@@ -25,5 +25,4 @@ public class AppProperties {
 
         return properties.get(propertyKey);
     }
-
 }

@@ -9,11 +9,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class Deserializer {
     private static final Logger LOGGER = Logger.getLogger(Deserializer.class.getName());
 
-    public static List<Line> getListOfDeserializedLines(int numberOfSerializedObjects) {
+    public static List<Line> getDeserializedLines(int numberOfSerializedObjects) {
         List<Line> deserializedLines = new ArrayList<>(0);
         Line line;
         String format = AppProperties.getPropertiesValue("typeOfAPI").equals("REST") ? Serializer.getJSON() :
@@ -23,9 +24,9 @@ public class Deserializer {
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             for (int i = 0; i < numberOfSerializedObjects; i++) {
                 line = (Line) objectInputStream.readObject();
-                deserializedLines.add(line);
+                deserializedLines.add(i, line);
             }
-        } catch (IOException | ClassNotFoundException exception) {
+        } catch (ClassNotFoundException | IOException exception) {
             LOGGER.error(exception.getMessage(), exception);
         }
 

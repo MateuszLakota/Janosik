@@ -22,7 +22,7 @@ public class Reader {
         List<Integer> validLinesIds = Validator.getValidLinesIds(lines);
 
         Serializer.serialize(lines, validLinesIds);
-        List<Line> deserializedLines = Deserializer.getListOfDeserializedLines(validLinesIds.size());
+        List<Line> deserializedLines = Deserializer.getDeserializedLines(validLinesIds.size());
     }
 
     public static List<Point> getPoints(File inputFilePath) {
